@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# greadlink hackery for using GNU coreutils from macports on OS X.
+READLINK=$(if [ $(which greadlink 2>/dev/null) ]; then echo greadlink; else echo readlink; fi)
+python2.7 $(dirname $0)/dim.py $1
