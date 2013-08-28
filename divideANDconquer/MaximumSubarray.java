@@ -24,18 +24,51 @@ public class MaximumSubarray{
 				difference[i] = Stock[i] - Stock[i-1]; 
 			}		
 
-			ret_values = maximumSubarray(difference,1,difference.length-1);
-		
+			//ret_values = maximumSubarray(difference,1,difference.length-1);
+			ret_values = maximumSubarrayLinearTime(difference,1,difference.length-1);
+			
 			System.out.println("The max sum is "+ret_values[0]+ " with start "+ret_values[1]+" and end "+ret_values[2]);
 			
-			for(int j=0;j<difference.length;j++){
-				System.out.println(difference[j]);
-			}
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 	}
 	
+	// This is linear time solution
+	private static Integer[] maximumSubarrayLinearTime(Integer[] diff, int start, int end){
+		int sum = 0;
+		int left = 0;
+		int right = 0;
+		Integer[] max_so_far = new Integer[3];
+		max_so_far[0] = 0;
+		
+		
+		for(int i=start; i<= end; i++){
+			sum += diff[i];
+			if(sum <= 0){
+				left = i;
+				sum = 0;
+				right = i+1;
+			}
+			
+			if (sum > 0){
+				right = i;
+			}
+			
+			if (sum >= max_so_far[0]){
+				max_so_far[1] = left;
+				max_so_far[0] = sum;
+				max_so_far[2] = right;
+			}
+		}
+		if (max_so_far[0] == 0){
+			max_so_far[1] = max_so_far[2] = 0;	
+		}
+		return max_so_far;
+	}
+	
+	
+	// This function takes O(n*logn) time  Note: It returns max_left pointer as starting point of next number which is higher
 	private static Integer[] maximumSubarray(Integer[] diff, int start, int end){
 		if (end == start){
 			Integer[] ret = new Integer[3];
