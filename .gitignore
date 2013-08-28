@@ -36,5 +36,14 @@
 ehthumbs.db
 Thumbs.db
 
+# Ignoring folders
 .metadata/
+bin/
+gen/
+proguard/
+
+.project
+.classpath
+
+
 

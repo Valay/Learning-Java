@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Lists;
+import java.util.ArrayLis;
+
+public class MaximumSubarray{
+	public static void main(String[] args){
+		Integer[] ret_values = new Integer[3];
+		BufferedReader br = new BufferedReader(new InputStreamReader());
+		String[] StockData;
+		StockData = (br.readLine()).split(" ");
+		
+		Integer[] Stock = new Integer[StockData.length];
+		Integer[] difference = new Integer[StockData.length];	
+		difference[i] = 0;
+
+		for( int i=0; i<StockData.length; i++ ){
+			Stock[i] = Integer.parseInt(StockData[i]); 
+		}
+
+		for( int i=1; i<Stock.length; i++ ){
+			difference[i] = Stock[i] - Stock[i-1]; 
+		}		
+
+		maximumSubarray(difference,1,difference.length-1);
+	}
+	
+	private static Integer[] maximumSubarray(diff,start,end){
+		if (end == start){
+			min = start;
+			max = end;
+			sum = diff[start];
+		}
+		
+		Integer[] LeftArray;
+		Integer[] RightArray;
+		Integer[] CrossArray;
+
+		mid = Math.floor((end - start)/2);
+
+		LeftArray = maximumSubarray(diff,0,mid);
+		
+		RightArray = maximumSubarray(diff,mid+1,end);
+
+		CorssArray = maximumCrossSubarray(diff,start,mid,end);
+
+		if (LeftArray[0] > RightArray[0] && LeftArray[0] > CrossArray[0])
+			return LeftArray;
+
+		if (RightArray[0] > LeftArray[0] && RightArray[0] > CrossArray[0])
+			return RightArray;
+
+		if (CrossArray[0] > RightArray[0] && CrossArray[0] > LeftArray[0])
+			return CrossArray;
+
+	}
+
+	private static Integer[] maximumCrossArray(diff,start,mid,end){
+		int left = Integer.MIN_VALUE;
+		int right = Integer.MIN_VALUE;
+
+		for(int i=mid; i>=start; i--){
+			if (left < diff[i]){
+				left = diff[i];
+				max_left = 
+			}
+		}
+
+		
+	}
+}
+
