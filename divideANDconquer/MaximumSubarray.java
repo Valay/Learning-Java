@@ -65,6 +65,9 @@ public class MaximumSubarray{
 			max_so_far[1] = max_so_far[2] = 0;	
 		}
 		return max_so_far;
+		
+		// or follow this link http://en.wikipedia.org/wiki/Maximum_subarray_problem 
+		// Look at the c++ algorithm!
 	}
 	
 	
