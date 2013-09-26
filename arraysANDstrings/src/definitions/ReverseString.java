@@ -14,7 +14,6 @@ public class ReverseString {
 	public String reverseWords(String s){
 		String[] words = s.split(" ");
 		String rev = "";
-		ArrayList<String> str = new ArrayList<String>();
 		for(String word: words){
 			rev += new StringBuffer(word).reverse().toString();
 			rev += " ";

@@ -1,8 +1,6 @@
 package definitions;
 
 
-import java.lang.StringBuffer;
-import java.util.HashSet;
 import java.util.Arrays;
 
 public class DuplicateChars {

@@ -21,6 +21,7 @@ public class Anagrams {
 			if (uniquechars[c] == 0){
 				return false;
 			}
+			uniquechars[c] -= 1;
 		}
 		
 		return true;
