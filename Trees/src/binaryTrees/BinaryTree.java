@@ -1,29 +1,42 @@
-package binaryTrees;
+package BinaryTrees;
 
-public class BinaryTree<T> {
-
-	private T value;
-	private BinaryTree<T> left;
-	private BinaryTree<T> right;
+public class BinaryTree{
+	
+	private BinaryNode root;
 	
 	public BinaryTree(){
-		this.value = null;
-		this.left = null;
-		this.right = null;
+		root = null;
 	}
 	
-	public BinaryTree(T val){
-		this.value = val;
-		this.left = null;
-		this.right = null;
+	public BinaryTree(int value){
+		root = new BinaryNode(value, null, null);
 	}
 	
-	public T getValue(){
-		return this.value;
+	public boolean insert(int value){
+		return this.root.insertNode(value);
 	}
 	
-	public void setValue(T val){
-		this.value = val;
+	public void postorder(){
+		System.out.print("\nPostOrderTraversal: ");
+		this.root.traversePostOrder();
 	}
 	
+	public void inorder(){
+		System.out.print("\nInOrderTraversal: ");
+		this.root.traverseInOrder();
+	}
+	
+	public void preorder(){
+		System.out.print("\nPreOrderTraversal: ");
+		this.root.traversePreOrder();
+	}
+	
+	public void roworder(){
+		System.out.print("\nRowOrderTraversal: ");
+		this.root.traverseRowOrder();
+	}
+	
+	public boolean isBalanced(){
+		return this.root.isBalanced();
+	}
 }

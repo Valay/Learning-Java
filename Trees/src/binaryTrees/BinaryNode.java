@@ -128,4 +128,9 @@ public class BinaryNode {
 			}
 		}
 	}
+	
+	public boolean isBalanced(){
+		
+		return true;
+	}
 }
