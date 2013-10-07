@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class EditDistance {
@@ -35,6 +37,42 @@ public class EditDistance {
 		}
 		return CurEdit[s2.length()-1];
 		
+	}
+	
+	public static int editDistance3(String s1, String s2){
+		
+		ArrayList<Integer> PrevEdit = new ArrayList<Integer>(s2.length());
+		ArrayList<Integer> CurEdit = new ArrayList<Integer>(s2.length());
+		
+		
+		for(int i=0;i<s2.length();i++){
+			PrevEdit.add(i);
+			CurEdit.add(i);
+		}
+		
+		for(int i=1;i<=s1.length();i++){
+			for(int j=0;j<s2.length();j++){
+				if(j==0){
+					CurEdit.set(j,new Integer(i));
+					continue;
+				}
+				else{
+					if(s1.charAt(i-1) == s2.charAt(j)){
+						//Base Case
+						CurEdit.set(j,PrevEdit.get(j-1));
+					}
+					else{
+						CurEdit.set(j, 1 + Math.min(CurEdit.get(j-1).intValue(),Math.min(PrevEdit.get(j).intValue(),PrevEdit.get(j-1).intValue())));
+					}
+				}
+				
+			}
+			for(int k=0;k<s2.length();k++){
+				//Copy CurEdit to PrevEdit
+				PrevEdit.set(k, CurEdit.get(k));
+			}
+		}
+		return CurEdit.get(s2.length()-1).intValue();
 	}
 
 	public static int editDistance(String s1, String s2) {
@@ -82,7 +120,7 @@ public class EditDistance {
 				System.out.print("> Input the second string: ");
 				s2 = reader.readLine();
 				System.out.println("> editDistance outputs "
-						+ editDistance2(s1, s2));
+						+ editDistance3(s1, s2));
 			}
 		} catch (IOException e) {
 			System.err.println("Error reading input strings.");
