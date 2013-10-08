@@ -8,11 +8,7 @@ public class EditDistance {
 	public static int editDistance2(String s1, String s2){
 		int[] PrevEdit = new int[s2.length()];
 		int[] CurEdit = new int[s2.length()];
-		long startTime = 0;
-		long endTime = 0;
-		long diffTime = 0;
 		
-		startTime = System.currentTimeMillis();
 		for(int i=0;i<s2.length();i++){
 			PrevEdit[i] = i;
 		}
@@ -39,8 +35,6 @@ public class EditDistance {
 				PrevEdit[k] = CurEdit[k];
 			}
 		}
-		endTime = System.currentTimeMillis();
-		System.out.println(endTime - startTime);
 		return CurEdit[s2.length()-1];
 		
 	}
@@ -81,37 +75,7 @@ public class EditDistance {
 		return CurEdit.get(s2.length()-1).intValue();
 	}
 	
-	public static int editDistance4(String s1, String s2){
-		
-        int n = s1.length();
-        int m = s2.length();
-        
-        int[][] Edit = new int[n+1][m+1];
-        
-        //Base case for 0
-        Edit[0][0] = 0;
-		
-		for(int i=0;i<n; i++){
-			Edit[i][0] = 0
-		}
-		
-		for(int i=0;i<m; i++){
-			Edit[0][i] = 0
-		}
-		
-        int k;
-        for(int i=1;i<=n;i++)
-        {
-            for(int j=1;j<=i;j++)
-            {
-				k = i;
-                if( s1.charAt(k-i-1) == s2.charAt(j-1) )
-                    Edit[i][j] = Edit[i-1][j-1];
-                else
-                    Edit[i][j] = Math.min(Edit[i-1][j-1], Math.min( Edit[i-1][j], Edit[i][j-1]) ) +1;
-            }
-        }
-        return Edit[n][m];
+	public static int editDistance(String s1, String s2){
 		
 	}
 
@@ -160,7 +124,7 @@ public class EditDistance {
 				System.out.print("> Input the second string: ");
 				s2 = reader.readLine();
 				System.out.println("> editDistance outputs "
-						+ editDistance4(s1, s2));
+						+ editDistance3(s1, s2));
 			}
 		} catch (IOException e) {
 			System.err.println("Error reading input strings.");
