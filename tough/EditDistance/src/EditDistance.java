@@ -1,18 +1,15 @@
 import java.io.*;
-import java.util.List;
 import java.util.ArrayList;
 
 
 public class EditDistance {
 
 	public static int editDistance2(String s1, String s2){
-		// Storing only two rows
-		
 		int[] PrevEdit = new int[s2.length()];
 		int[] CurEdit = new int[s2.length()];
 		long startTime = 0;
 		long endTime = 0;
-		long diffTime = 0;
+		//long diffTime = 0;
 		
 		startTime = System.currentTimeMillis();
 		for(int i=0;i<s2.length();i++){
@@ -48,7 +45,6 @@ public class EditDistance {
 	}
 	
 	public static int editDistance3(String s1, String s2){
-		// Not copying values
 		
 		ArrayList<Integer> PrevEdit = new ArrayList<Integer>(s2.length());
 		ArrayList<Integer> CurEdit = new ArrayList<Integer>(s2.length());
@@ -85,7 +81,6 @@ public class EditDistance {
 	}
 	
 	public static int editDistance4(String s1, String s2){
-		// Traversing arrays diagonally2
 		
         int n = s1.length();
         int m = s2.length();
@@ -95,37 +90,15 @@ public class EditDistance {
         //Base case for 0
         Edit[0][0] = 0;
 		
-		for(int i=0;i<=n; i++){
-			Edit[i][0] = i;
+		for(int i=0;i<n; i++){
+			Edit[i][0] = 0;
 		}
 		
-		for(int i=0;i<=m; i++){
-			Edit[0][i] = i;
+		for(int i=0;i<m; i++){
+			Edit[0][i] = 0;
 		}
 		
-		for(int i=1;i<=n;i++){
-			for(int j=0;j<=n;j++){
-				
-			}
-		}
-		
-		for (int diag = 1; diag < m + n - 1; ++diag) {
-		    int k1 = diag <= n ? 1 : diag - n + 1;
-		    int k2 = diag <= m ? 1 : diag - m + 1;
-		    for (int j = diag - k2+1; j >= k1; --j) {
-				/*
-				if(s1.charAt(j-1) == s1.charAt(diag-j)){
-					Edit[j][diag-j+1] = Edit[j-1][diag-j];
-				}else{
-					Edit[j][diag-j+1] = Math.min(Edit[j-1][diag-j], Math.min( Edit[j-1][diag-j+1], Edit[j][diag-j]) ) +1;
-				}
-				*/
-					System.out.print(Edit[j][diag-j+1]+" ");
-		    }
-			System.out.println("");
-		}
-		
-		/*	
+        int k;
         for(int i=1;i<=n;i++)
         {
             for(int j=1;j<=i;j++)
@@ -136,7 +109,7 @@ public class EditDistance {
                 else
                     Edit[i][j] = Math.min(Edit[i-1][j-1], Math.min( Edit[i-1][j], Edit[i][j-1]) ) +1;
             }
-        }*/
+        }
         return Edit[n][m];
 		
 	}
@@ -186,7 +159,7 @@ public class EditDistance {
 				System.out.print("> Input the second string: ");
 				s2 = reader.readLine();
 				System.out.println("> editDistance outputs "
-						+ editDistance4(s1, s2));
+						+ editDistance2(s1, s2));
 			}
 		} catch (IOException e) {
 			System.err.println("Error reading input strings.");
