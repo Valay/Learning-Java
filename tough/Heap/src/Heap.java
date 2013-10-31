@@ -63,7 +63,7 @@ class Heap
 		return true;
 	}
 	
-	// Always remove the top - heighest priority element of the heap
+	// Always remove the top - highest priority element of the heap
 	public int heapRemove(){
 		if(heap.isEmpty()){
 			return -1;
