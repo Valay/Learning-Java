@@ -16,7 +16,12 @@ public class MyClass implements Runnable{
 		System.out.println(thread.getName());
 		System.out.println(thread.getId());
 		System.out.println(Thread.currentThread().getName());
-	
+//		try {
+//			thread.join();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		ThreadClass tc = new ThreadClass();
 		
 		for (int i=0;i<10;i++){
