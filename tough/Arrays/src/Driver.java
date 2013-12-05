@@ -22,7 +22,7 @@ public class Driver {
 		String[] numbers = null;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			numbers = br.readLine().split(" ");
+			numbers = br.readLine().split("\\s+");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,11 +38,16 @@ public class Driver {
 		 * 5 4 6 7 5 3 5 5 2 5 5 7 5 8 5 5 1 1
 		 * 3 4 5 9 9 7 8 2 1 2 0 3 4 8 5 4 1
 		 */
-		MajorityElement me = new MajorityElement();
-		System.out.println(me.isMajor(nums));
+//		MajorityElement me = new MajorityElement();
+//		System.out.println(me.isMajor(nums));
 		
+		/*
+		 * Test
+		 * 1 2 9 8 7 2 3 7 6 5 9 8 6 5 3 
+		 */
 		// call functions that uses array
-		
+		OddOccurence oo = new OddOccurence();
+		System.out.println(oo.odd(nums));
 	}
 	
 }
