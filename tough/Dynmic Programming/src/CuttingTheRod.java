@@ -2,8 +2,8 @@
 public class CuttingTheRod {
 	
 	public static void main(String[] args){
-		int arr[] = {2, 5, 8, 9, 10, 17, 17, 20};
-		int len = 4;
+		int arr[] = {2, 5, 8, 9, 10, 17, 17, 20, 21, 25, 27};
+		int len = 11;
 		
 		CuttingTheRod ctr = new CuttingTheRod();
 		
