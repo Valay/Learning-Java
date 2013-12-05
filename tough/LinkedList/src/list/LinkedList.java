@@ -2,18 +2,98 @@ package list;
 
 public class LinkedList<T> {
 	
-	T data;
-	LinkedList<T> next;
+	LL<T> head = null;
 	
-	public LinkedList(T a){
-		data = a;
+	private class LL<T>{
+		T data;
+		LL<T> next;
+		
+		public LL(T a){
+			this.data = a;
+			this.next = null;
+		}
 	}
 	
-	public T getData(){
-		return this.data;
+	public void insertHead(T a){
+		if(head == null){
+			head = new LL<T>(a);
+			return;
+		}
+		LL<T> newnode = new LL<T>(a);
+		newnode.next = head;
+		head = newnode;
 	}
 	
-	public void setData(T a){
-		data = a;
+	public void insertTail(T a){
+		LL<T> newnode = new LL<T>(a);
+		if(head == null){
+			head = newnode;
+			return;
+		}
+		LL<T> temp = head;
+		while(temp.next != null){
+			temp = temp.next;
+		}
+		temp.next = newnode;
+		return;
+	}
+	
+	public T deleteHead(){
+		if(head != null){
+			T temp = head.data;
+			head = head.next;
+			return temp;
+		}
+		return null;
+	}
+	
+	public void delete(T a){
+		if(head == null){
+			return;
+		}
+		
+		if(head.data == a){
+			head = head.next;
+			return;
+		}
+		
+		LL<T> temp = head;
+		while(temp.next != null){
+			if(temp.next.data == a){
+				temp.next = temp.next.next;
+				return;
+			}
+			temp = temp.next;
+		}
+	}
+	
+	public T getMiddle(){
+		LL<T> temp1 = head;
+		LL<T> temp2 = head;
+		T b = null;
+		while(temp2 != null){
+			if(temp2.next == null){
+				b = temp1.data;
+				break;
+			}
+			temp2 = temp2.next;
+			if(temp2.next == null){
+				b = temp1.data;
+				break;
+			}
+			temp2 = temp2.next;
+			temp1 = temp1.next;
+		}
+		
+		return b;
+	}
+	
+	public void print(){
+		LL<T> temp = head;
+		while(temp != null){
+			System.out.print(temp.data+" ");
+			temp = temp.next;
+		}
+		return;
 	}
 }
