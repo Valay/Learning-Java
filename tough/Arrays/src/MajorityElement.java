@@ -1,5 +1,10 @@
 import java.util.List;
 
+/* 
+ * Mojority Element using Moore's voting algorithm
+ * 
+ */
+
 
 public class MajorityElement {
 

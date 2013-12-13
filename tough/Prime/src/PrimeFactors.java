@@ -5,28 +5,50 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+/*
+ * Valay Shah
+ * Printing Factors of a number
+ * 
+ */
 
 public class PrimeFactors {
 
 	public static void main(String[] args){
-			System.out.println(args[0]+" "+args[1]);
-			int n = Integer.parseInt(args[1]);
-			PrimeFactors pf = new PrimeFactors();
-			pf.printFactors(n);
+			if(args.length != 1){   // if user enters arguments ohter than a number
+				System.out.println("Usage: java PrintFactors [Integer]");
+				System.exit(0);
+			}
+			try{
+				int n = Integer.parseInt(args[0]);
+				PrimeFactors pf = new PrimeFactors();
+				pf.printFactors(n);
+			}catch(NumberFormatException e){   // if user enters anything other than an integer
+				System.out.println("Please enter an Integer!\n");
+				System.out.println("Usage: java PrintFactors [Integer]");
+				System.exit(0);
+			}
 		}
 	
-	public void printFactors(int n){
+	// Takes care of printing stuff
+	public void printFactors(int n){  
+		if(n <= 0){   // <= 0 
+			System.out.println("Please enter integer >= 0, only positive integers supported!");
+			return;
+		}
 		System.out.println("1 * "+n);
 		Set<ArrayList<Integer>> treeset = fetchFactors(n);
 		for(ArrayList<Integer> ts : treeset){
-			System.out.print(ts.get(0));
-			for(int i=1;i<ts.size();i++){
-				System.out.print(" * "+ts.get(i));
+			if(ts.size() != 0){     // to check for 1
+				System.out.print(ts.get(0));
+				for(int i=1;i<ts.size();i++){
+					System.out.print(" * "+ts.get(i));
+				}
+				System.out.print("\n");
 			}
-			System.out.print("\n");
 		}
 	}
 	
+	// Returns the unique factors in form of multiplication (Recursive function)
 	private Set<ArrayList<Integer>> fetchFactors(int n){
 		Set<ArrayList<Integer>> s = new HashSet<ArrayList<Integer>>();
 		if(n == 1){
@@ -36,21 +58,18 @@ public class PrimeFactors {
 		}
 		
 		Set<Integer> factors = this.getFactors(n);
-		//System.out.println(factors);
 		Iterator<Integer> it = factors.iterator();
 		it.next(); // skip 1
 		int cur,mul;
 		while(it.hasNext()){
 			cur = it.next();
 			mul = n/cur;
-			//System.out.println(cur+" "+mul);
 			Set<ArrayList<Integer>> sts = fetchFactors(mul);
 
 			for(ArrayList<Integer> temp : sts){
 				ArrayList<Integer> ts = new ArrayList<Integer>(temp);
 				ts.add(cur);
 				Collections.sort(ts);
-				//System.out.println(ts);
 				s.add(ts);
 			}
 			// also add the cur and mul to the list
@@ -65,6 +84,7 @@ public class PrimeFactors {
 		return s;
 	}
 	
+	// Returns all the factors of a number excluding the number!
 	public TreeSet<Integer> getFactors(int n){
 		int counter=1;
 		if(n%2 !=0){

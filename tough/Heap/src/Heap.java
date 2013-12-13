@@ -2,32 +2,35 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-class Heap
+/** Implementation of max MaxHeap*/
+/*
+ * 
+ */
+class MaxHeap
 {
 	
-	private List<Integer> heap = new ArrayList<Integer>();
+	private List<Integer> MaxHeap = new ArrayList<Integer>();
 	
 	public boolean isEmpty(){
-		if(heap.isEmpty()){
+		if(MaxHeap.isEmpty()){
 			return true;
 		}
 		return false;
 	}
 	
-	public void heapAdd(int a){
-		heap.add(a);
-		int index = heap.size()-1;
-		heapifyUp(index);
+	public void MaxHeapAdd(int a){
+		MaxHeap.add(a);
+		int index = MaxHeap.size()-1;
+		MaxHeapifyUp(index);
 	}
 	
-	private void heapifyUp(int ci){
+	private void MaxHeapifyUp(int ci){
 		// get parent index;
 		int pi = (int)Math.floor(((double)ci-1.0)/2.0);;
 		
-		// heapify!
+		// MaxHeapify!
 		while(pi >= 0){
-			if(heap.get(pi) < heap.get(ci)){
+			if(MaxHeap.get(pi) < MaxHeap.get(ci)){
 				swap(pi,ci);
 				ci = pi;
 				pi = (int)Math.floor(((double)ci-1.0)/2.0);
@@ -39,85 +42,85 @@ class Heap
 	
 	private void swap(int a, int b){
 		int temp;
-		temp = heap.get(a);
-		heap.set(a, heap.get(b));
-		heap.set(b,temp);
+		temp = MaxHeap.get(a);
+		MaxHeap.set(a, MaxHeap.get(b));
+		MaxHeap.set(b,temp);
 	}
 	
-	private boolean heapifyDown(int pi){
+	private boolean MaxHeapifyDown(int pi){
 		// get children indexes;
 		
 		int L = 2*pi + 1;
 		int R = 2*pi + 2;
 		
 		
-		if(heap.size() > L && heap.get(L) > heap.get(pi)){
+		if(MaxHeap.size() > L && MaxHeap.get(L) > MaxHeap.get(pi)){
 			swap(L, pi);
-			heapifyDown(L);
+			MaxHeapifyDown(L);
 		}
 		
-		if(heap.size() > R && heap.get(R) > heap.get(pi)){
+		if(MaxHeap.size() > R && MaxHeap.get(R) > MaxHeap.get(pi)){
 			swap(R, pi);
-			heapifyDown(R);
+			MaxHeapifyDown(R);
 		}
 		return true;
 	}
 	
-	// Always remove the top - highest priority element of the heap
-	public int heapRemove(){
-		if(heap.isEmpty()){
+	// Always remove the top - highest priority element of the MaxHeap
+	public int MaxHeapRemove(){
+		if(MaxHeap.isEmpty()){
 			return -1;
 		}
-		int ret_value = heap.get(0);
-		if(heap.size() != 1){
-			heap.set(0, heap.remove(heap.size()-1));
-			// heapify
-			heapifyDown(0);
+		int ret_value = MaxHeap.get(0);
+		if(MaxHeap.size() != 1){
+			MaxHeap.set(0, MaxHeap.remove(MaxHeap.size()-1));
+			// MaxHeapify
+			MaxHeapifyDown(0);
 		}
 		else
-			heap.remove(0);
+			MaxHeap.remove(0);
 		return ret_value;
 	}
 	
 	// Returns the highest priority element without removing it
-	public int heapPoll(){
-		return heap.get(0);
+	public int MaxHeapPoll(){
+		return MaxHeap.get(0);
 	}
 
 	public static void main(String args[]){
 		
-		Heap h = new Heap();
+		MaxHeap h = new MaxHeap();
 		
-		h.heapAdd(5);
-		h.heapAdd(9);
-		h.heapAdd(6);
-		h.heapAdd(1);
-		h.heapAdd(4);
-		h.heapAdd(2);
-		h.heapAdd(7);
-		h.heapAdd(8);
-		//h.heapAdd(4);
-		h.heapAdd(3);
-		h.heapAdd(0);
-		//h.heapAdd(1);
+		h.MaxHeapAdd(5);
+		h.MaxHeapAdd(9);
+		h.MaxHeapAdd(6);
+		h.MaxHeapAdd(1);
+		h.MaxHeapAdd(4);
+		h.MaxHeapAdd(2);
+		h.MaxHeapAdd(7);
+		h.MaxHeapAdd(8);
+		//h.MaxHeapAdd(4);
+		h.MaxHeapAdd(3);
+		h.MaxHeapAdd(0);
+		//h.MaxHeapAdd(1);
 		
-		System.out.println(h.heap);
-		//System.out.println(h.heap.size());
-		System.out.println(h.heapRemove());
-		System.out.println(h.heapPoll());
+		System.out.println(h.MaxHeap);
+		//System.out.println(h.MaxHeap.size());
+		System.out.println(h.MaxHeapRemove());
+		System.out.println(h.MaxHeapPoll());
 		
 		while(!h.isEmpty()){
-			System.out.println(h.heapRemove());
+			System.out.println(h.MaxHeapRemove());
 		}
 		
-		h.heapAdd(6);
-		h.heapAdd(1);
-		h.heapAdd(4);
-		h.heapAdd(2);
-		h.heapAdd(7);
+		h.MaxHeapAdd(6);
+		h.MaxHeapAdd(1);
+		h.MaxHeapAdd(4);
+		h.MaxHeapAdd(2);
+		h.MaxHeapAdd(7);
 		
 		while(!h.isEmpty()){
-			System.out.println(h.heapRemove());
+			System.out.println(h.MaxHeapRemove());
 		}
 	}
 

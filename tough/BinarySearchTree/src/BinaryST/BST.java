@@ -17,7 +17,21 @@ public class BST {
 			this.left = null;
 		}
 	}
-
+	
+//	public void inorderSuccessor(){
+//		inorderSuccessor(root, (Node)null);
+//	}
+//	
+//	private void inorderSuccessor(Node r, Node x){
+//		if(r == null){
+//			return;
+//		}else{
+//			inorderSuccessor(r.right,x);
+//			r.next = x;
+//			x = r;
+//			inorderSuccessor(r.left,x);
+//		}
+//	}
 	// size
 	public int size() {
 		return root.count;
