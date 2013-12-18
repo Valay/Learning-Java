@@ -22,6 +22,8 @@ public class Driver {
 		}
 		
 		l.print();
-		System.out.println(l.getMiddle());
+		//System.out.println(l.getMiddle());
+		l.reverseList();
+		l.print();
 	}
 }

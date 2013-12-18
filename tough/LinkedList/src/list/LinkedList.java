@@ -14,6 +14,28 @@ public class LinkedList<T> {
 		}
 	}
 	
+	public void reverseList(){
+		if(this.head == null){
+			return;
+		}
+		LL<T> cur = this.head;
+		LL<T> prev = null;
+		LL<T> nxt = cur.next;
+		
+		while(cur != null){
+			cur.next = prev;
+			prev = cur;
+			if(nxt != null){
+				cur = nxt;
+				nxt = cur.next;
+			}else{
+				head = cur;
+				return;
+			}
+		}
+		return;
+	}
+	
 	public void insertHead(T a){
 		if(head == null){
 			head = new LL<T>(a);
