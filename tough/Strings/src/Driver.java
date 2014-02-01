@@ -19,7 +19,7 @@ public class Driver {
 		
 		// String reverse using recursion
 		StringReverseUsingRecursion rev = new StringReverseUsingRecursion();
-		rev.reverse(s1);
+		rev.reverse2(s2);
 	}
 	
 }

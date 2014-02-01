@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import MergeSort.MergeSort;
+import QuickSort.Quicksort;
 
 public class Driver {
 
@@ -32,10 +33,13 @@ public class Driver {
 				int[] data = new int[list.size()];
 				for(int i=0;i<list.size();i++){
 					data[i] = list.get(i);
-					System.out.print(data[i]+" ");
+					//System.out.print(data[i]+" ");
 				}
+				System.out.println(data.length);
 				
-				data = MergeSort.mergesort(data, 0 , data.length);
+				//data = MergeSort.mergesort(data, 0 , data.length);				
+				Quicksort qs = new Quicksort();
+				data = qs.quicksort(data);
 				System.out.println("");
 				for(int i=0;i<data.length;i++){
 					System.out.print(data[i]+" ");
