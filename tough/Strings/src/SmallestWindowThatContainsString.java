@@ -57,7 +57,7 @@ public class SmallestWindowThatContainsString {
 					while(hm2.get(q.peek()) == null){
 						q.remove();
 					}
-					if(min_len)
+					//if(min_len)
 				}
 			}
 		}
