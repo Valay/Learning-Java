@@ -22,7 +22,7 @@ public class MergeKSortedArrays {
 		
 		System.out.println(arrList);
 		
-		MinHeap heap = new MinHeap();
+		//MinHeap heap = new MinHeap();
 		
 		for(List<Integer> a : arrList){
 			

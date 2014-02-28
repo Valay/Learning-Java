@@ -6,7 +6,7 @@ public class ASCII {
 		
 		for(int i=0;i<256;i++){
 			char c = (char) i;
-			System.out.println(c);
+			System.out.println(c + " " + i);
 		}
 	}
 }
